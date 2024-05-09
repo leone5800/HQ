@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/936b50e383.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="styles.css">
+  <title>Xandao Em Busca Da Terra Plana</title>
+</head>
+
+<body>
+  <div class="slide">
+    <div class="item-slide">
+      <div id="voltar" class="btn">
+        <i class="fas fa-chevron-left"></i>
+      </div>
+      <div id="avancar" class="btn">
+        <i class="fas fa-chevron-right"></i>
+      </div>
+
+      <div id="atual" class="images">
+        <img  src="Xandao_em_Busca_da_Terra_Plana/capa4.jpg" alt="" srcset="">
+      </div>
+      <div id="atual" class="images">
+        <img id="o" src="Xandao_em_Busca_da_Terra_Plana/1.jpg" alt="" srcset="">
+      </div>
+      <div id="atual" class="images">
+        <img id="eu" src="Xandao_em_Busca_da_Terra_Plana/2.jpg" alt="" srcset="">
+      </div>
+      <div id="atual" class="images">
+        <img id="j" src="Xandao_em_Busca_da_Terra_Plana/3.jpg" alt="" srcset="">
+      </div>
+      <div class="images">
+        <img src="Xandao_em_Busca_da_Terra_Plana/4.jpg" alt="" srcset="">
+      </div>
+      <div class="images">
+        <img src="Xandao_em_Busca_da_Terra_Plana/5.jpg" alt="" srcset="">
+      </div>
+      
+    </div>
+    <div class="position">
+    </div>
+  </div>
+  <a href="words/Xandão Em Busca Da Terra Plana.pdf" download="Xandao Em Busca Da Terra Plana"><button class="meu-botao">Download</button></a>
+</body>
+<script>
+  var position = document.querySelector('.position')
+  var quant = document.querySelectorAll('.item-slide .images')
+  var atual = 0
+  var imagem = document.getElementById('atual')
+  var avancar = document.getElementById('avancar')
+  var voltar = document.getElementById('voltar')
+  var rolar = true
+
+  for (let i = 0; i < quant.length; i++) {
+    var div = document.createElement('div')
+    div.id = i
+    position.appendChild(div)
+  }
+  document.getElementById('0').classList.add('primeira')
+
+  var pos = document.querySelectorAll('.position div')
+
+  for (let i = 0; i < pos.length; i++) {
+    pos[i].addEventListener('click', () => {
+      atual = pos[i].id
+      rolar = false
+      slide()
+    })
+  }
+
+  voltar.addEventListener('click', () => {
+    atual--
+    rolar = false
+    slide()
+  })
+
+  avancar.addEventListener('click', () => {
+    atual++
+    rolar = false
+    slide()
+  })
+
+  function slide() {
+    if (atual >= quant.length) {
+      atual = 0;
+    } else if (atual < 0) {
+      atual = quant.length - 1
+    }
+
+    document.querySelector('.primeira').classList.remove('primeira')
+    imagem.style.marginLeft = -1024 * atual +'px'
+    document.getElementById(atual).classList.add('primeira')
+
+  }
+
+  setInterval(()=>{
+    if(rolar){
+      atual++
+      slide()
+    }else{
+      rolar = true
+    }
+  },4000)
+
+</script>
+
+</html>
